@@ -29,8 +29,8 @@ def walk_and_find(path, string, ext):
     for root, directories, files in os.walk(path):
         for f in filter(partial(discart, ext=ext), files):
             with open(os.path.join(root, f)) as file:
-                file = file.read()
-                if string in f:
+                content = file.read()
+                if string in content:
                     print("File found: {}".format(os.path.join(root, f)))
                     file_found = True
     if not file_found:
